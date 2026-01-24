@@ -71,6 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroContent) {
         heroContent.classList.add('visible');
     }
+    
+    // Adjust the wave video speed
+    const waveVideo = document.getElementById('waveVideo');
+    if (waveVideo) {
+        waveVideo.playbackRate = 0.75; // Play at 75% speed
+    }
 });
 
 // Smooth scrolling for anchor links
@@ -135,6 +141,68 @@ if (contactForm) {
 
 // Parallax effect removed - hero section stays fixed
 
+// Cursor circle animation
+document.addEventListener('DOMContentLoaded', () => {
+    const cursorCircle = document.getElementById('cursorCircle');
+    
+    if (cursorCircle) {
+        // Elements that should hide the cursor circle
+        const hideOnElements = [
+            'a', 'button', 'input', 'select', 'textarea',
+            '.btn', '.focus-card', '.team-card', '.differentiator-card',
+            '.status-bar', '.status-nav', '.mobile-menu',
+            '.hero-content', '.about-us-box', '.contact-form'
+        ];
+        
+        const shouldHideCircle = (element) => {
+            if (!element) return false;
+            
+            // Check if element or any parent matches hide conditions
+            let current = element;
+            while (current && current !== document.body) {
+                // Check tag name
+                const tagName = current.tagName?.toLowerCase();
+                if (tagName === 'a' || tagName === 'button' || tagName === 'input' || 
+                    tagName === 'select' || tagName === 'textarea') {
+                    return true;
+                }
+                
+                // Check classes
+                for (const selector of hideOnElements) {
+                    if (current.matches && current.matches(selector)) {
+                        return true;
+                    }
+                }
+                
+                current = current.parentElement;
+            }
+            
+            return false;
+        };
+        
+        document.addEventListener('mousemove', (e) => {
+            cursorCircle.style.left = e.clientX + 'px';
+            cursorCircle.style.top = e.clientY + 'px';
+            
+            if (shouldHideCircle(e.target)) {
+                cursorCircle.style.display = 'none';
+            } else {
+                cursorCircle.style.display = 'block';
+            }
+        });
+        
+        document.addEventListener('mouseenter', (e) => {
+            if (!shouldHideCircle(e.target)) {
+                cursorCircle.style.display = 'block';
+            }
+        });
+        
+        document.addEventListener('mouseleave', () => {
+            cursorCircle.style.display = 'none';
+        });
+    }
+});
+
 // Enhanced hover effects for focus cards with blue theme
 document.addEventListener('DOMContentLoaded', () => {
     const focusCards = document.querySelectorAll('.focus-card');
@@ -149,16 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Add smooth reveal animation for buttons
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-        });
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
+    // Button hover effects removed
 });
 
 // Typing effect for hero headline (optional enhancement)

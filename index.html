@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="cursor-circle" id="cursorCircle"></div>
   <div class="status-bar">
     <a href="#hero" class="status-brand">
-      <img src="assets/Amura_Logo.png" alt="Amura Studio Logo" class="logo-image" />
+      <img src="assets/Amura_Logo_New.png" alt="Amura Studio Logo" class="logo-image" />
     </a>
     <nav class="status-nav">
       <a href="#hero">Home</a>
@@ -32,23 +33,12 @@
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
       <div class="hero-bg-img" aria-hidden="true">
-        <div class="compass-container">
-          <img src="assets/Compass.jpg" alt="Compass" class="compass-image" />
-        </div>
-        <div class="ocean-waves-bg">
-          <svg class="wave-layer wave-layer-1" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100 L1200,200 L0,200 Z" fill="rgba(242,92,5,0.3)"/>
-          </svg>
-          <svg class="wave-layer wave-layer-2" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,120 Q200,70 400,120 T800,120 T1200,120 L1200,200 L0,200 Z" fill="rgba(242,92,5,0.25)"/>
-          </svg>
-          <svg class="wave-layer wave-layer-3" viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,140 Q180,90 360,140 T720,140 T1080,140 T1200,140 L1200,200 L0,200 Z" fill="rgba(242,92,5,0.2)"/>
-          </svg>
-        </div>
-        <div class="ocean-surface" id="oceanSurface">
-          <!-- Wake effects will be dynamically created by JavaScript -->
-        </div>
+        <video class="wave-video-bg" autoplay muted loop playsinline id="waveVideo">
+          <source src="assets/Wave Animation.mp4" type="video/mp4">
+          <source src="assets/Wave Animation.mov" type="video/quicktime">
+          <source src="assets/Wave Animation.webm" type="video/webm">
+        </video>
+        <div class="wave-video-overlay"></div>
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="site-container">
@@ -194,7 +184,7 @@
           <a href="dataprivacy.html" class="footer-link">Data Privacy</a>
           <a href="https://www.linkedin.com/company/mazu-partners" class="footer-link" target="_blank" rel="noopener" aria-label="LinkedIn">
             <!-- Custom LinkedIn logo SVG, black fill -->
-            <svg class="linkedin-icon" width="20" height="20" viewBox="0 0 50 50" fill="black" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" rx="10" fill="black" fill-opacity="0"/><path d="M41.25 41.25H34.5833V32.0833C34.5833 29.9167 34.5417 27.0833 31.6667 27.0833C28.75 27.0833 28.3333 29.5 28.3333 31.9167V41.25H21.6667V21.6667H28.0833V24.25H28.1667C29.0833 22.5833 31.0417 20.8333 33.8333 20.8333C40.0833 20.8333 41.25 24.8333 41.25 29.25V41.25ZM14.1667 19.0833C12.0833 19.0833 10.4167 17.4167 10.4167 15.3333C10.4167 13.25 12.0833 11.5833 14.1667 11.5833C16.25 11.5833 17.9167 13.25 17.9167 15.3333C17.9167 17.4167 16.25 19.0833 14.1667 19.0833ZM17.0833 41.25H11.25V21.6667H17.0833V41.25ZM44.1667 6.25H5.83333C4.08333 6.25 2.66667 7.66667 2.66667 9.41667V45.4167C2.66667 47.1667 4.08333 48.5833 5.83333 48.5833H44.1667C45.9167 48.5833 47.3333 47.1667 47.3333 45.4167V9.41667C47.3333 7.66667 45.9167 6.25 44.1667 6.25Z" fill="black"/>
+            <svg class="linkedin-icon" width="20" height="20" viewBox="0 0 50 50" fill="white" xmlns="http://www.w3.org/2000/svg"><rect width="50" height="50" rx="10" fill="white" fill-opacity="0"/><path d="M41.25 41.25H34.5833V32.0833C34.5833 29.9167 34.5417 27.0833 31.6667 27.0833C28.75 27.0833 28.3333 29.5 28.3333 31.9167V41.25H21.6667V21.6667H28.0833V24.25H28.1667C29.0833 22.5833 31.0417 20.8333 33.8333 20.8333C40.0833 20.8333 41.25 24.8333 41.25 29.25V41.25ZM14.1667 19.0833C12.0833 19.0833 10.4167 17.4167 10.4167 15.3333C10.4167 13.25 12.0833 11.5833 14.1667 11.5833C16.25 11.5833 17.9167 13.25 17.9167 15.3333C17.9167 17.4167 16.25 19.0833 14.1667 19.0833ZM17.0833 41.25H11.25V21.6667H17.0833V41.25ZM44.1667 6.25H5.83333C4.08333 6.25 2.66667 7.66667 2.66667 9.41667V45.4167C2.66667 47.1667 4.08333 48.5833 5.83333 48.5833H44.1667C45.9167 48.5833 47.3333 47.1667 47.3333 45.4167V9.41667C47.3333 7.66667 45.9167 6.25 44.1667 6.25Z" fill="white"/>
           </a>
         </nav>
       </div>
